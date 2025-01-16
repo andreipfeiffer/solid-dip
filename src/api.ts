@@ -21,12 +21,10 @@ const instance = axios.create({
 //   price: number;
 // };
 
-// export type CartItem = Product & {
 // type CartItem = Product & {
 //   quantity: number;
 // };
 
-// export type Cart = Record<number, CartItem>;
 // type Cart = Record<number, CartItem>;
 
 export async function getCart() {
