@@ -43,7 +43,7 @@ export function CartPage(props: { onLogout: () => void }) {
       name: `Product ${index}`,
       price: 10,
       quantity: 1,
-      status: "in_stock",
+      status: Math.random() < 0.5 ? "in_stock" : "out_of_stock",
     } as const;
 
     store.addToCart(item);
