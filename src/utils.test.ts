@@ -11,14 +11,14 @@ describe("addItemToCart", () => {
     expect(newCart).toEqual({ [item.id]: item });
   });
 
-  // it("should not add out of stock item to cart", () => {
-  //   const cart = {};
-  //   const item = getOutOfStockItemStub({ id: 1, qty: 1, price: 10 });
+  it.skip("should not add out of stock item to cart", () => {
+    const cart = {};
+    const item = getOutOfStockItemStub({ id: 1, qty: 1, price: 10 });
 
-  //   const newCart = addItemToCart(cart, item);
+    const newCart = addItemToCart(cart, item);
 
-  //   expect(newCart).toEqual({});
-  // });
+    expect(newCart).toEqual({});
+  });
 });
 
 describe("getCartTotal", () => {
