@@ -41,7 +41,7 @@ export function CartPage(props: { onLogout: () => void }) {
     const item = {
       id: index,
       name: `Product ${index}`,
-      price: index * 10,
+      price: 10,
       quantity: 1,
       status: "in_stock",
     } as const;
