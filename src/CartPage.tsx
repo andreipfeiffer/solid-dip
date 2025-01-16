@@ -22,11 +22,15 @@ export function CartPage(props: { onLogout: () => void }) {
         {Object.values(store.items).map((item) => (
           <li key={item.id}>
             {item.quantity} x {item.name}
-            <button
-              onClick={() => store.updateQuantity(item.id, item.quantity + 1)}
-            >
-              +
-            </button>
+            {item.quantity > 0 ? (
+              <button
+                onClick={() => store.updateQuantity(item.id, item.quantity + 1)}
+              >
+                +
+              </button>
+            ) : (
+              <em>Out of stock</em>
+            )}
           </li>
         ))}
       </ul>
