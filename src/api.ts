@@ -6,7 +6,6 @@ const instance = axios.create({
   headers: { Authorization: localStorage.getItem("token") },
 });
 
-// export const ProductStatus = {
 // const ProductStatus = {
 //   InStock: "in_stock",
 //   OutOfStock: "out_of_stock",
