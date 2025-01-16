@@ -7,6 +7,7 @@ const instance = axios.create({
 });
 
 // export const ProductStatus = {
+// const ProductStatus = {
 //   InStock: "in_stock",
 //   OutOfStock: "out_of_stock",
 // } as const;
@@ -21,10 +22,12 @@ const instance = axios.create({
 // };
 
 // export type CartItem = Product & {
+// type CartItem = Product & {
 //   quantity: number;
 // };
 
 // export type Cart = Record<number, CartItem>;
+// type Cart = Record<number, CartItem>;
 
 export async function getCart() {
   try {
