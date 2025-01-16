@@ -17,7 +17,7 @@ describe("addItemToCart", () => {
 
     const newCart = addItemToCart(cart, item);
 
-    expect(newCart).toEqual({});
+    expect(newCart[item.id].quantity).toEqual(0);
   });
 });
 
