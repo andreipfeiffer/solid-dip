@@ -15,16 +15,8 @@ export default tseslint.config(
       globals: globals.browser,
     },
     plugins: {
-      boundaries,
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-    },
-    settings: {
-      "boundaries/elements": [
-        { type: "domain", pattern: "src/core" },
-        { type: "app", pattern: "src/app" },
-        { type: "io", pattern: "src/io" },
-      ],
     },
     rules: {
       ...reactHooks.configs.recommended.rules,
@@ -32,24 +24,34 @@ export default tseslint.config(
         "warn",
         { allowConstantExport: true },
       ],
-
+    },
+  },
+  {
+    files: ["**/*.{ts,tsx}"],
+    plugins: { boundaries },
+    settings: {
+      "boundaries/include": ["src/**/*"],
+      "boundaries/elements": [
+        { type: "domain", pattern: "*/core/*" },
+        { type: "app", pattern: "*/app/*" },
+        { type: "ui", pattern: "*/ui/*" },
+        { type: "api", pattern: "*/api/*" },
+      ],
+    },
+    rules: {
+      ...boundaries.configs.recommended.rules,
+      "boundaries/entry-point": ["off"],
       "boundaries/element-types": [
         "error",
         {
-          default: "disallow",
+          default: "allow",
+          message:
+            'Modules in the "${file.type}" package are not allowed to depend on modules from the "${dependency.type}" package',
           rules: [
-            {
-              from: "io",
-              allow: ["io"],
-            },
-            {
-              from: "app",
-              allow: ["app", "io"],
-            },
-            {
-              from: "domain",
-              allow: ["domain", "app", "io"],
-            },
+            { from: "ui", allow: ["ui"] },
+            { from: "api", allow: ["api", "app", "domain"] },
+            { from: "app", allow: ["app", "domain"] },
+            { from: "domain", disallow: ["api", "ui", "app"] },
           ],
         },
       ],
