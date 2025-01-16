@@ -1,10 +1,12 @@
 import { create } from "zustand";
 import { addItemToCart, getCartTotal } from "./utils";
 
-interface CartStore {
-  items: any;
+type Cart = Record<number, any>;
 
-  init(cart: any): void;
+interface CartStore {
+  items: Cart;
+
+  init(cart: Cart): void;
   addToCart(item: any): void;
   updateQuantity(id: number, quantity: number): void;
   getTotal(): number;
@@ -13,7 +15,7 @@ interface CartStore {
 export const useCartStore = create<CartStore>((set, get) => ({
   items: {},
 
-  init(cart: any) {
+  init(cart: Cart) {
     set(() => ({ items: cart }));
   },
 
